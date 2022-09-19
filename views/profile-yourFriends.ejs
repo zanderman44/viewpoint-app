@@ -1,0 +1,18 @@
+<%- include('includes/header') %>
+
+<div class="container-lg py-md-5 col-12 col-md-8">
+  <%- include('includes/flash') %>
+  <%- include('includes/profileShared') %>
+
+  <div class="list-group">
+    <% yourFriends.forEach((yourFriend) => { %>
+      <a href="/profile/<%= yourFriend.username %>" class="list-group-item lst-grp-item py-0 d-flex align-items-center">
+        <p class="avatar-small" data-red="<%- yourFriend.redCode %>" data-green="<%- yourFriend.greenCode %>" data-blue="<%- yourFriend.blueCode %>"><%= yourFriend.avatar %></p>
+        <%= yourFriend.username %>
+      </a>
+    <% })%>
+  </div>
+</div>
+
+
+<%- include('includes/footer') %>

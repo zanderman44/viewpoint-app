@@ -1,0 +1,18 @@
+<%- include('includes/header') %>
+
+<!-- main section-->
+<div class="container-lg py-md-5 col-12 col-md-8">
+  <%- include('includes/flash') %>
+  <%- include('includes/profileShared') %>
+
+  <div class="list-group">
+    <% messages.forEach((message) => { %>
+      <a href="/message/<%= message._id %>" class="list-group-item lst-grp-item py-0 d-flex align-items-center">
+        <p class="avatar-small" data-red="<%- message.author.redCode %>" data-green="<%- message.author.greenCode %>" data-blue="<%- message.author.blueCode %>"><%= message.author.avatar %></p>  
+        <strong><%= message.messageTitle %> </strong> <span class="text-muted small ms-2"> on <%= message.createdDate.getDate()%>/<%= message.createdDate.getMonth() + 1%>/<%= message.createdDate.getFullYear()%></span>
+      </a>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

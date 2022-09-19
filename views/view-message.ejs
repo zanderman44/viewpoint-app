@@ -1,0 +1,41 @@
+  <%- include('includes/header') %>
+
+  <div class="container-lg py-md-5 col-12 col-md-8"> 
+    <%- include('includes/flash') %>
+    <div class="row"> 
+      <div class="row">
+        <div class="col-10">
+          <h2><%= message.messageTitle %></h2>
+          <% if (message.isVisitorAuthor) { %>
+        </div> 
+            <div class="col-1 d-flex align-items-center justify-content-end"> 
+              <h5>
+              <a href="/message/<%= message._id %>/edit" class="tltp" data-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></a>
+              </h5> 
+            </div> 
+            <div class="col-1 d-flex align-items-center"> 
+              <form action="/message/<%= message._id %>/delete" method="POST">
+                <h5>
+                <button class="btn-delete-message tltp" data-placement="top" title="Delete"><i class="bi bi-trash text-danger"></i></button>
+                </h5>
+              </form>
+            </div> 
+          <% } %>
+        </div>
+      </div>
+ 
+      <div class="text-muted d-flex align-items-center">
+        <p class="avatar-small" data-red="<%- message.author.redCode %>" data-green="<%- message.author.greenCode %>" data-blue="<%- message.author.blueCode %>"><%= message.author.avatar %></p>
+        <a>
+          Created by <a href="/profile/<%= message.author.username %>" class="author-link mx-1"><%= message.author.username %></a> on <%= message.createdDate.getDate()%>/<%= message.createdDate.getMonth() + 1%>/<%= message.createdDate.getFullYear()%>
+        </a>
+      </div> 
+
+      <div>
+        <p><%- userHTML(message.messageContent) %></p> 
+      </div> 
+    
+    </div> 
+  </div> 
+
+  <%- include('includes/footer') %>

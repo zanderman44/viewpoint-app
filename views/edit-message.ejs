@@ -1,0 +1,27 @@
+<%- include('includes/header') %>
+
+<!-- main section-->
+<div class="container-lg py-md-5 col-12 col-md-8">
+  <%- include('includes/flash') %>
+    
+  <div class="text-center">
+    <h2>Edit your new message below</h2>
+  </div>
+  <div class="mt-4">
+    
+    <a href="/message/<%= message._id %>" class="small">&laquo; Back to message</a>
+    <form action="/message/<%= message._id %> /edit" method="POST">
+    <div class="mt-4">
+      <label for="messageTitle" class="text-muted">Title</label>
+      <input required class="form-control text-area" name="messageTitle" id="messageTitle" type="text" value="<%= message.messageTitle%>">
+    </div>
+    <div class="mt-4">
+      <label for="messageContent" class="text-muted">Content</label>
+      <textarea required class="form-control text-area" rows="8" name="messageContent" id="messageContent"><%= message.messageContent%></textarea>
+    </div>
+    <button class="btn btn-color text-color mt-4">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

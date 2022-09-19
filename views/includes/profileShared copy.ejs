@@ -1,0 +1,20 @@
+  <h2>
+    <p class="avatar" data-red="<%- profileRedCode %>" data-green="<%- profileGreenCode %>" data-blue="<%- profileBlueCode %>"><%= profileAvatar %></p><%= profileUsername %>
+      <% if (member && !isMembersProfile) {
+      if (isFriend) { %>
+        <form action="/removeFriend/<%= profileUsername %>" method="POST">
+          <button class="btn btn-danger btn-sm">Stop Following</button>
+        </form>
+      <% } else { %>
+        <form action="/addFriend/<%= profileUsername %>" method="POST">
+          <button class="btn btn-primary btn-sm">Follow</button>
+        </form>
+      <% }
+      } %>
+  </h2>
+
+  <div class="nav nav-tabs my-3">
+    <a href="/profile/<%= profileUsername %>" class="nav-item nav-link <%= currentPage == 'messages' ? 'active' : '' %>">Posts: <%= counts.messageCount %></a>
+    <a href="/profile/<%= profileUsername %>/theirFriend" class="nav-item nav-link <%= currentPage == 'theirFriend' ? 'active' : '' %>">Followers: <%= counts.theirFriendCount %></a>
+    <a href="/profile/<%= profileUsername %>/yourFriends" class="nav-item nav-link <%= currentPage == 'yourFriends' ? 'active' : '' %>">Following: <%= counts.yourFriendsCount %></a>
+  </div>

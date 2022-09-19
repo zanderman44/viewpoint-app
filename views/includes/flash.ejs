@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-center mb-3">
+  <% errors.forEach((errorMessage) => { %>
+    <div class="col-10 col-md-6 mb-5 mb-md-0 alert alert-danger text-center"><%= errorMessage %></div>
+  <% }) %>
+</div>
+
+<div class="d-flex justify-content-center mb-3">
+  <% success.forEach((errorMessage) => { %>
+    <div class="col-10 col-md-6 mb-5 mb-md-0 alert alert-success text-center"><%= errorMessage %></div>
+  <% }) %>
+</div>

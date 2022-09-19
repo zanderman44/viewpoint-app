@@ -1,0 +1,25 @@
+<%- include('includes/header') %>
+
+<!-- main section-->
+<div class="container-lg py-md-5 col-12 col-md-8">
+  <%- include('includes/flash') %>
+  <div class="text-center">
+    <h2>Write your new message below</h2>
+  </div>
+  <div>
+    <form action="/new-message" method="POST">
+      <div class="mt-5">
+        <label for="messageTitle" class="text-muted">Title</label>
+        <input required class="form-control text-area" name="messageTitle" id="messageTitle" type="text" autocomplete="off">
+      </div>
+      <div class="mt-4">
+        <label for="messageContent" class="text-muted">Content</label>
+        <textarea required class="form-control text-area" rows="8" name="messageContent" id="messageContent" autocomplete="off"></textarea>
+      </div>
+      <!-- <input type="hidden" name="_csrf" value="<%= csrfToken  %>"> -->
+      <button class="btn btn-color text-color mt-4">Save New Message</button>
+    </form>
+  </div>
+</div>
+
+<%- include('includes/footer') %>

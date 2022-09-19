@@ -1,0 +1,25 @@
+<%- include('includes/header') %>
+
+<!-- main section -->
+<div class="container-lg py-md-5 col-12 col-md-8">
+  <%- include('includes/flash') %>
+
+  <% if (messages.length) { %>
+    <h2 class="text-center mb-5">The Latest From Those You Follow</h2>
+    <div class="list-group">
+      <% messages.forEach((message) => { %>
+        <a href="/message/<%= message._id %>" class="list-group-item lst-grp-item py-0 d-flex align-items-center">
+          <p class="avatar-small" data-red="<%- message.author.redCode %>" data-green="<%- message.author.greenCode %>" data-blue="<%- message.author.blueCode %>"><%= message.author.avatar %></p>
+          <strong><%= message.messageTitle %></strong> <span class="text-muted small ms-2">by <%= message.author.username %> on <%= message.createdDate.getDate()%>/<%= message.createdDate.getMonth() + 1%>/<%= message.createdDate.getFullYear()%></span>
+        </a>
+      <% })%>
+    </div>
+  <% } else { %>
+    <div class="text-center">
+      <h2>Hello <strong><%= member.username %></strong>, your feed is empty.</h2>
+      <p class="lead text-muted">Your feed displays the latest posts from the people you follow. If you don&rsquo;t have any friends to follow that&rsquo;s okay; you can use the &ldquo;Search&rdquo; feature in the top menu bar to find content written by people with similar interests and then follow them.</p>
+    </div>
+  <% } %>
+</div>
+
+<%- include('includes/footer') %>

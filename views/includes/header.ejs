@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <title><%= typeof(messageTitle) == "undefined" ? 'ViewPoint' : `${messageTitle} | ViewPoint` %></title>
+  <link rel="stylesheet" href="/main.css">
+  <base href="/">
+</head>
+<body>
+
+  <!-- header -->
+  <header class="header-section mb-3 row main-color">
+    <div class="container-lg col-10 py-4">
+      <div class="row justify-content-between">
+        <div class="app_name col-md-3 p-0 text-center text-md-start text-color">
+          <a href="/" class="link fs-3 text-color text-decoration-none">ViewPoint</a>
+        </div>  
+        <% if (member) { %>
+          <div class="col-md-8 p-0">  
+            <div class="row p-0 justify-content-center justify-content-md-end">
+              <div class="col-1 pt-1">
+                <a class="search-icon text-color link tltp" title="Search" data-bs-placement="bottom"><i class="bi bi-search pointer"></i></a>
+              </div>
+              <div class="col-1 pt-1" >
+                <a class="chat-icon text-color link tltp" title="Chat" data-bs-placement="bottom"><i class="bi bi-chat-text"></i></a>
+              </div>
+              <div class="col-2 avatar" data-red="<%- member.red %>" data-green="<%- member.green %>" data-blue="<%- member.blue %>">
+                <a href="/profile/<%= member.username %>" class="profile tltp" title="Profile" data-bs-placement="bottom"><%= member.avatar %></a>
+              </div>
+              <div class="col-3 p-0 text-end">
+                <a class="btn btn-color text-color" href="/new-message">Write Message</a>
+              </div>
+              <div class="col-2 p-0 text-end">
+                <form action="/logout" method="POST">
+               
+                  <button class="btn btn-color text-color">Sign Out</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% } else { %>
+          <div class="col-md-6">
+            <form action="/login" method="POST" id="log-in">
+              <div class="row justify-content-center justify-content-md-end">
+                <div class="col-8 col-md-4 mb-1 mb-md-0 mt-3 mt-md-0">
+                  <input name="username" type="text" class="form-control header-text-input" placeholder="Username" autocomplete="off">
+                </div>
+                <div class="col-8 col-md-4 mb-1 mb-md-0">
+                  <input name="password" type="password" class="form-control header-text-input" placeholder="Password">
+                </div>
+                <div class="col-8 col-md-4 col-lg-3">
+             
+                  <button type="submit" class="btn btn-signup col-12 btn-color text-color">Log in</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </header>

@@ -1,0 +1,38 @@
+<%- include('includes/header') %>
+
+<!-- main section-->
+<div class="container-lg">
+  <%- include('includes/flash') %>
+  
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6 pe-md-5 text-center text-md-start">
+      <h1>
+        <div class="display-3">Somthing on Your Mind?</div>
+      </h1>
+      <p class="lead my-3">Why not tell the world about it. Do you have a message you would like to share with others? Something important the world should know about? If so, join ViewPoint today and spread your message.</p>
+    </div>
+    <div class="col-md-4 pt-5">
+      <form action="/registration" method="POST" id="reg-form">
+        <% registrationErrors.forEach((errorMessage) => { %>
+          <div class="col-12 alert alert-danger small text-center"><%= errorMessage %></div>
+        <% }) %>
+        <div class="mb-3 form-group">
+          <label for="username-reg" class="form-label text-muted">Name</label>
+          <input name="username" type="text" class="form-control text-area" id="username-reg" placeholder="Choose your username" autocomplete="off">
+        </div>
+        <div class="mb-3 form-group">
+          <label for="email-reg" class="form-label text-muted">Email</label>
+          <input name="email" type="email" class="form-control text-area" id="email-reg" placeholder="Enter your best email address" autocomplete="off">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3 form-group">
+          <label for="password-reg" class="form-label text-muted">Password</label>
+          <input name="password" type="password" class="form-control text-area" id="password-reg" placeholder="Create a password">
+        </div>
+        <button type="submit" class="btn mt-2 btn-lg col-12 btn-color text-color">Sign up now</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('includes/footer') %>
