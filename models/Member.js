@@ -48,7 +48,7 @@ Member.prototype.validate = function () {
 }
 
 Member.prototype.createAvatar = function() {
-  const avatarChars = (this.memberData.username.slice(0,1) + this.memberData.username.slice(-1)).toUpperCase()
+  const avatarChars = this.memberData.username.slice(0,1) + this.memberData.username.slice(-1)
   const charCodeRed = avatarChars.charCodeAt(0)
   const charCodeGreen = avatarChars.charCodeAt(1)
 
